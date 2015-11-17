@@ -1,1 +1,3 @@
 node_modules
+Py/config/*private*
+*.pyc
