@@ -4,6 +4,8 @@ It
 	Should
 		guarantee that the principal is not lost
 		allow the user to override/dismiss recommendations made by prgm
+		allow user to set an escape price
+		allow user to define their desired level of risk
 	Has
 		UI
 			Objective Data Console
@@ -16,10 +18,10 @@ It
 		Express web application
 		Modular API
 		Easy to add new algorithms
-		Machine learning pipeline 
+		Machine learning pipeline
 Idea
-	Metasploit-like cli to start?
+	host locally
+		much easier
+		shiny servers
 	xen servers
-	heroku servers
-		Just run like 10 dynos at once
-	
+		faster
