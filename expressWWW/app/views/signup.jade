@@ -1,0 +1,11 @@
+extends layout
+block content
+  h1 Signup
+  form(action='/signup' method='POST') 
+    input(name='authtype' type='text' value='local')
+    input(id='username' name='username' type='text' placeholder='username')
+    input(id='password' name='password' type='text' placeholder='password')
+    input(id='email' name='email' type='text' placeholder='email')
+    input(id='submitButton' type='submit' text='Submit')
+  
+  script(src='//code.jquery.com/jquery-2.1.4.min.js')
