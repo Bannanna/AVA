@@ -1,4 +1,4 @@
-#TODO make a hash table of stuff from https://www.quandl.com/docs/api
+# TODO make a hash table of stuff from https://www.quandl.com/docs/api
 # !!! dont continue developing until this hash table is done, because
 # the methods below should concur !!! sleep time now
 
@@ -47,7 +47,7 @@ class Q(object):
     def fullquery(self, database, dataset, data_format='j', limit=None, rows=None, start_date=None, end_date=None, order='asc', column_index=None, collapse=None, transform=None, send=False):
         database = database.upper() + '/'
         dataset = dataset.upper() + typetable[data_format] + '?'
-        #validate start and end date arguments and append '/'
+        # validate start and end date arguments and append '/'
         if validate_date(start_date):
             start_date = 'start_date=' + start_date + '&'
         else: start_date = ''
