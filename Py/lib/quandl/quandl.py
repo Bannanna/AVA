@@ -2,8 +2,6 @@
 # !!! dont continue developing until this hash table is done, because
 # the methods below should concur !!! sleep time now
 
-#Should make a bunch of hash tables to make parsing arguments passed by user easier
-
 import sh, time, datetime, math
 
 QUANDL_BASE_API = 'https://www.quandl.com/api/v3/'
@@ -40,10 +38,11 @@ class Q(object):
         self.RATELIMITS = '2,000 calls per 10 minutes, 50,000 calls per day'
 
     def testRoute(self, fullroute, callback=defaultcallback):
-        return callback(request.get(fullroute)) ##get the full route, and handle the response with a user defined callback
+        return callback(sh.curl(fullroute)) ##get the full route, and handle the response with a user defined callback
 
-    def quicky(self, full_route='datasets/WIKI/AAPL', callback=defaultcallback):
-        return defaultcallback(requests.get(self.url + full_route))
+    def quicky(self, full_route, callback=defaultcallback):
+        return callback(sh.curl(full_route))
+
 # The returned string is good to go, but SSL errors and a curl error are flunking it up
     def fullquery(self, database, dataset, data_format='j', limit=None, rows=None, start_date=None, end_date=None, order='asc', column_index=None, collapse=None, transform=None, send=False):
         database = database.upper() + '/'
@@ -55,13 +54,14 @@ class Q(object):
         if validate_date(end_date):
             end_date = 'end_date=' + end_date + '&'
         else: end_date = ''
+        # hacky solution to Error('Cannot concatenate str and NoneType objects')
         column_index = 'column_index=' + str(column_index) + '&' if column_index else ''
         limit = 'limit=' + str(limit) + '&' if limit else ''
         rows = 'rows=' + str(rows) + '&' if rows else ''
-        order = 'order=' + order + '&'
-        column_index = 'column_index=' + column_index+ '&' if column_index else ''
+        column_index = 'column_index=' + str(column_index) + '&' if column_index else ''
         collapse = 'collapse=' + collapse + '&' if collapse else ''
         transform = 'transformation=' + transform + '&' if transform else ''
+        order = 'order=' + order + '&'
         api_key = 'api_key=' + self.APIKEY + '&'
         qstring = self.BASEURL + 'datasets/' + database + dataset + api_key + limit + rows + start_date + end_date + order + column_index + collapse + transform
         if send:
