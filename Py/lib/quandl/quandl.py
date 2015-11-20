@@ -1,7 +1,4 @@
 # TODO make a hash table of stuff from https://www.quandl.com/docs/api
-# !!! dont continue developing until this hash table is done, because
-# the methods below should concur !!! sleep time now
-
 import sh, time, datetime, math
 
 QUANDL_BASE_API = 'https://www.quandl.com/api/v3/'
@@ -10,7 +7,7 @@ QUANDL_WIKI_URL = 'https://www.quandl.com/api/v3/datasets/WIKI/AAPL'
 #                        'start_date=1985-05-01&end_date=1997-07-01&order=asc&' +
 #                        'column_index=4&collapse=quarterly&transformation=rdiff'
 
-# The combination of database_code and dataset_code is called the Quandl code. ie WIKI/AAPL
+# The combination of database_code and dataset_code is called the Quandl code. eg. WIKI/AAPL
 
 typetable = {
     'j': '.json',
