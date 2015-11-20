@@ -46,7 +46,7 @@ class Q(object):
     def fullquery(self, database, dataset, data_format='j', limit=None, rows=None, start_date=None, end_date=None, order='asc', column_index=None, collapse=None, transform=None, send=False):
         database = database.upper() + '/'
         dataset = dataset.upper() + typetable[data_format] + '?'
-        # validate start and end date arguments and append '/'
+        # validate start and end date arguments and append '&'
         if validate_date(start_date):
             start_date = 'start_date=' + start_date + '&'
         else: start_date = ''
@@ -54,6 +54,8 @@ class Q(object):
             end_date = 'end_date=' + end_date + '&'
         else: end_date = ''
         # hacky solution to Error('Cannot concatenate str and NoneType objects')
+        # just set default args to ''
+        # what was u thinkin, musta bn hi or some shit
         column_index = 'column_index=' + str(column_index) + '&' if column_index else ''
         limit = 'limit=' + str(limit) + '&' if limit else ''
         rows = 'rows=' + str(rows) + '&' if rows else ''
