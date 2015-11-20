@@ -1,5 +1,5 @@
 GOAL
-	Turn $500 into $1,000,000 in under 3months
+	Turn $500 into $1,000,000
 It
 	Should
 		guarantee that the principal is not lost
