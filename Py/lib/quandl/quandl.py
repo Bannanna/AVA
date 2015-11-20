@@ -43,7 +43,6 @@ class Q(object):
     def quicky(self, full_route, callback=defaultcallback):
         return callback(sh.curl(full_route))
 
-# The returned string is good to go, but SSL errors and a curl error are flunking it up
     def fullquery(self, database, dataset, data_format='j', limit=None, rows=None, start_date=None, end_date=None, order='asc', column_index=None, collapse=None, transform=None, send=False):
         database = database.upper() + '/'
         dataset = dataset.upper() + typetable[data_format] + '?'
